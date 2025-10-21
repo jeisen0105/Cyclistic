@@ -421,7 +421,33 @@ top_10_starting_stations %>%
 
 This section synthesizes the key findings from the analysis into a compelling narrative for the marketing director and executive team.
 
+### Average Ride Length by Day of Week
 
+The graph below shows...
 
+![Chart](averagere_ride_length_by_day.png)
 
+### Total Rides by Day of Week
+
+The graph below shows...
+
+### Average Ride Length by Month
+
+The graph below shows...
+
+### Total Rides by Day of Month
+
+The graph below shows...
+
+### Average Ride Length by Hour of Day
+
+The graph below shows...
+
+### Total Rides by  Hour of Day
+
+The graph below shows...
+
+### Total Rides by Starting Location
+
+The graph below shows...
 
