@@ -120,9 +120,9 @@ ride_duration_stats <- combined_data %>%
 write_csv(ride_duration_stats, "ride_duration_stats.csv")
 ```
 
-CSV FILE
+The data table below shows...
 
-EXPLANATION 
+![Chart](ride_duration_stats.png) 
 
 ### Analyzing Daily Usage Trend by User Type
 
@@ -139,9 +139,9 @@ ride_duration_and_count_by_weekday <- combined_data %>%
 write_csv(ride_duration_and_count_by_weekday, "ride_duration_and_count_by_weekday.csv")
 ```
 
-CSV FILE
+The table below shows...
 
-EXPLANATION 
+![Chart](ride_duration_and_count_by_weekday.png) 
 
 ### Analyzing Monthly Usage Trends by User Type
 
@@ -158,9 +158,9 @@ ride_duration_and_count_by_month <- combined_data %>%
 write_csv(ride_duration_and_count_by_month, "ride_duration_and_count_by_month.csv")
 ```
 
-CSV FILE
+The table below shows...
 
-EXPLANATION 
+![Chart](ride_duration_and_count_by_month.png)  
 
 ### Analyzing Hourly Usage Trends by User Type
 
@@ -177,9 +177,9 @@ ride_duration_and_count_by_hour <- combined_data %>%
 write_csv(ride_duration_and_count_by_hour, "ride_duration_and_count_by_hour.csv")
 ```
 
-CSV FILE
+The table below shows...
 
-EXPLANATION 
+![Chart](ride_duration_and_count_by_hour.png) 
 
 ### Analyzing Top 10 Start Stations by User Type
 
@@ -194,10 +194,9 @@ top_10_starting_stations <- combined_data %>%
 
 write_csv(top_10_starting_stations, "top_10_starting_stations.csv")
 ```
+The table below shows...
 
-CSV FILE
-
-EXPLANATION 
+![Chart](top_10_starting_stations.png) 
 
 
 
