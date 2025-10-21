@@ -425,7 +425,7 @@ This section synthesizes the key findings from the analysis into a compelling na
 
 The graph below shows...
 
-![Chart](averagere_ride_length_by_day.png)
+![Graph](graphs/avererage_ride_length_by_day.png)
 
 ### Total Rides by Day of Week
 
