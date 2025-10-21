@@ -122,7 +122,7 @@ write_csv(ride_duration_stats, "ride_duration_stats.csv")
 
 The data table below shows...
 
-<img width="612" height="792" alt="ride_duration_stats" src="https://github.com/user-attachments/assets/263a1c37-499f-4e89-9611-8577ef4c6c44" />
+<img width="454" height="84" alt="ride_duration_stats" src="https://github.com/user-attachments/assets/f2bffbf3-ef75-4091-b905-4b2c55ee409d" />
 
 ### Analyzing Daily Usage Trend by User Type
 
