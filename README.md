@@ -425,8 +425,7 @@ This section synthesizes the key findings from the analysis into a compelling na
 
 The graph below shows...
 
-[Average Ride Length by Day of Week](https://github.com/jeisen0105/Cyclistic/blob/bdf0c88ecd424c83bbf82e368fbac1446454a440/graphs/average_ride_length_by_day.png
-)
+![Chart](graphs/average_ride_length_by_day.png)
 
 ### Total Rides by Day of Week
 
