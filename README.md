@@ -431,23 +431,34 @@ The graph below shows...
 
 The graph below shows...
 
+![Chart](graphs/ride_volume_by_day.png)
+
 ### Average Ride Length by Month
 
 The graph below shows...
+
+![Chart](graphs/average_ride_length_by_month.png)
 
 ### Total Rides by Day of Month
 
 The graph below shows...
 
+![Chart](graphs/ride_volume_by_month.png)
+
 ### Average Ride Length by Hour of Day
 
 The graph below shows...
 
-### Total Rides by  Hour of Day
+![Chart](graphs/average_ride_length_by_hour.png)
+
+### Total Rides by Hour of Day
 
 The graph below shows...
+
+![Chart](graphs/ride_volume_by_hour.png)
 
 ### Total Rides by Starting Location
 
 The graph below shows...
 
+![Chart](graphs/top_10_starting_stations.png)
