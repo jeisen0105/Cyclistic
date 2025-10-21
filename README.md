@@ -22,7 +22,7 @@ The business task is to analyze how annual members and casual riders use Cyclist
 
 ### Does the Data ROCCC?
 
-To ensure the quality of this analysis, the data must be Reliable, Original, Comprehensive, Current, and Cited (ROCCC). The dataset used in this project consists of historical trip data from Divvy, Chicago’s bike-share system, from September 8th 2024 to September 8th 2025. The data was made publicly available by Motivate International Inc. under their Data License Agreement. The data is also public and anonymized to protect riders' privacy. It excludes any personally identifiable information such as names, phone numbers, or payment details.
+To ensure the quality of this analysis, the data must be Reliable, Original, Comprehensive, Current, and Cited (ROCCC). The dataset used in this project consists of historical trip data from Divvy, Chicago’s bike-share system, from September 8th 2024 to September 8th 2025. The data was made publicly available by Motivate International Inc. under their Data License Agreement. The data is also public and anonymized to protect riders' privacy. It excludes any personally identifiable information such as names, phone numbers, or payment details. The raw data, once combined, is estimated to contain over 5.4 million total rides.
 
 Applying the ROCCC framework:
 - Reliable & Original: The data comes directly from a primary source (Divvy) and reflects actual trip history.
@@ -127,6 +127,8 @@ The table below shows the descriptive statistics for ride length in minutes, com
 | casual        	| 22.78            	| 13.02              	| 0.01            	| 1439.76         	|
 | member        	| 12.19            	| 8.72               	| 0.01            	| 1436.97         	|
 
+* Casual riders have a much higher mean ride length (22.78 min) compared to members (12.19 min), suggesting they use the bikes for longer, possibly recreational rides, while members use them for commutes/quick trips.
+
 ### Analyzing Daily Usage Trend by User Type
 
 Further analysis was performed to understand daily rider behavior. The data was grouped by both member type and day of the week to calculate the total number of rides and the average ride length. This summary was then saved to a CSV file named ride_duration_and_count_by_weekday.csv for documentation and further analysis.
@@ -160,6 +162,8 @@ The table below shows the daily usage patterns for casual and member riders. It 
 | member        	| Thu         	| 437814      	| 11.72               	|
 | member        	| Fri         	| 402533      	| 12.08               	|
 | member        	| Sat         	| 341605      	| 13.52               	|
+
+* Casual riders peak heavily on weekends (Sat/Sun), while member ridership is highest and consistent Monday-Thursday, indicating a commuter pattern for members.
 
 ### Analyzing Monthly Usage Trends by User Type
 
@@ -203,6 +207,8 @@ The table below shows the monthly trends in ridership, summarizing the total num
 | member        	| Oct   	| 289761      	| 11.88               	|
 | member        	| Nov   	| 177129      	| 10.95               	|
 | member        	| Dec   	| 102515      	| 10.51               	|
+
+* Both groups have clear seasonal peaks (Summer/Fall), but the difference in average ride length is largest during these peak months, reinforcing the recreational use by casuals during warm weather.
 
 ### Analyzing Hourly Usage Trends by User Type
 
@@ -271,6 +277,8 @@ The table below shows a granular view of daily ridership, summarizing the total 
 | member        	| 22          	| 56182       	| 12.48               	|
 | member        	| 23          	| 34469       	| 12.62               	|
 
+* Members show a clear bimodal distribution (morning and evening commuter peaks). Casuals have a single, broader peak in the mid-afternoon (1:00 PM - 5:00 PM), consistent with leisure activity.
+
 ### Analyzing Top 10 Start Stations by User Type
 
 To understand ridership patterns across different station locations, the top 10 most popular starting stations were identified and compared between casual and member riders. The data was first counted by member type and station name, then grouped by member type, and finally, the top 10 stations with the highest total ride count were selected for each group. The final result was sorted and saved to a CSV file named top_10_starting_stations.csv
@@ -309,9 +317,106 @@ The table below shows the top 10 most popular starting stations for each user se
 | member        	| Wells St & Concord Ln              	| 18105       	|
 | member        	| University Ave & 57th St           	| 16866       	|
 
+* Casual top stations (e.g., Streeter Dr & Grand Ave, Shedd Aquarium) are overwhelmingly tourist/recreational hotspots, while member top stations (e.g., Kingsbury St & Kinzie St, Clinton St & Washington Blvd) are concentrated in business/commuter districts.
 
+### Creating Graphs for Each Table
 
+To effectively translate our descriptive findings into compelling insights for key stakeholders, we will now execute the code necessary to generate the visual summaries for the 'Share' phase. This process involves creating seven targeted charts that categorize rider behavior across both Time (examining usage by hour, day of week, and month) and Location (identifying peak activity at top starting stations). These graphics utilize two primary metrics—Average Ride Length and Total Rides—to provide the robust visual evidence required to clearly distinguish the patterns of member and casual riders, ultimately driving our final strategic recommendations.
 
+#### Graphing Daily Usage Trend by User Type
 
+```r
+ride_duration_and_count_by_weekday %>%
+  ggplot(aes(x = day_of_week, y = total_rides, fill = member_casual)) +
+  geom_col(position = "dodge") +
+  labs(title = "Total Rides by Day of Week: Casual vs. Annual Members",
+       x = "Day of Week",
+       y = "Total Rides",
+       fill = "Rider Type") +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+ride_duration_and_count_by_weekday %>%
+  ggplot(aes(x = day_of_week, y = average_ride_length, fill = member_casual)) +
+  geom_col(position = "dodge") +
+  labs(title = "Average Ride Length (Minutes) by Day of Week",
+       x = "Day of Week",
+       y = "Average Ride Length (Minutes)",
+       fill = "Rider Type") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+#### Graphing Monthly Usage Trends by User Type
+
+```r
+ride_duration_and_count_by_month %>%
+  ggplot(aes(x = month, y = total_rides, group = member_casual, color = member_casual)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
+  labs(title = "Rider Volume by Month (Annual Seasonality)",
+       x = "Month",
+       y = "Total Rides",
+       color = "Rider Type") +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+ride_duration_and_count_by_month %>%
+  ggplot(aes(x = month, y = average_ride_length, group = member_casual, color = member_casual)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
+  labs(title = "Average Ride Length (Minutes) by Month",
+       x = "Month",
+       y = "Average Ride Length (Minutes)",
+       color = "Rider Type") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+#### Graphing Hourly Usage Trends by User Type
+
+```r
+ride_duration_and_count_by_hour %>%
+  ggplot(aes(x = hour_of_day, y = total_rides, group = member_casual, color = member_casual)) +
+  geom_line(linewidth = 1.2) +
+  labs(title = "Total Rides by Hour of Day: Commuter vs. Leisure Patterns",
+       x = "Hour of Day (0 = Midnight, 17 = 5 PM)",
+       y = "Total Rides",
+       color = "Rider Type") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = seq(0, 23, by = 3)) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+ride_duration_and_count_by_hour %>%
+  ggplot(aes(x = hour_of_day, y = average_ride_length, group = member_casual, color = member_casual)) +
+  geom_line(linewidth = 1.2) +
+  labs(title = "Average Ride Length (Minutes) by Hour of Day",
+       x = "Hour of Day (0 = Midnight, 17 = 5 PM)",
+       y = "Average Ride Length (Minutes)",
+       color = "Rider Type") +
+  scale_x_continuous(breaks = seq(0, 23, by = 3)) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+#### Graphing Top 10 Start Stations by User Type
+
+```r
+top_10_starting_stations %>%
+  arrange(member_casual, desc(total_rides)) %>%
+  mutate(start_station_name = factor(start_station_name, levels = unique(start_station_name))) %>%
+  ggplot(aes(x = total_rides, y = start_station_name, fill = member_casual)) +
+  geom_col() +
+  facet_wrap(~ member_casual, scales = "free_y", ncol = 1) +
+  labs(title = "Top 10 Starting Stations: Casual vs. Annual Members", x = "Total Rides", y = "Start Station Name", fill = "Rider Type") +
+  scale_x_continuous(labels = scales::comma) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5), axis.text.y = element_text(size = 10))
+```
+
+## Step 5: Share
 
 
