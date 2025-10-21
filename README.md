@@ -326,7 +326,7 @@ To effectively translate our descriptive findings into compelling insights for k
 #### Graphing Daily Usage Trend by User Type
 
 ```r
-ride_duration_and_count_by_weekday %>%
+ride_duration_and_count %>%
   ggplot(aes(x = day_of_week, y = total_rides, fill = member_casual)) +
   geom_col(position = "dodge") +
   labs(title = "Total Rides by Day of Week: Casual vs. Annual Members",
@@ -337,7 +337,7 @@ ride_duration_and_count_by_weekday %>%
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
-ride_duration_and_count_by_weekday %>%
+ride_duration_and_count %>%
   ggplot(aes(x = day_of_week, y = average_ride_length, fill = member_casual)) +
   geom_col(position = "dodge") +
   labs(title = "Average Ride Length (Minutes) by Day of Week",
@@ -418,5 +418,10 @@ top_10_starting_stations %>%
 ```
 
 ## Step 5: Share
+
+This section synthesizes the key findings from the analysis into a compelling narrative for the marketing director and executive team.
+
+
+
 
 
