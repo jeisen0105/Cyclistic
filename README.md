@@ -464,7 +464,7 @@ A visual summary of my analysis and findings is available in this Google Slides 
 
 ## Step 6: Act
 
-The final section, Act, translates the findings into actionable business recommendations.
+The final section, Act, translates the findings into actionable business recommendations. The analysis reveals that casual riders are primarily leisure-focused, seasonal, and location-dependent users. Therefore, the strategic action plan will focus on Seasonal Pre-conversion, Flexible Weekend Options, and Geotargeted Marketing to capture and convert these users into dependable annual members.
 
 ### Recommendations: 
 
