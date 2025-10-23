@@ -52,6 +52,7 @@ all_files <- list.files(
   full.names = TRUE 
 )
 
+# Use map_dfr to efficiently read and row-bind the 12 monthly CSV files into one dataframe.
 combined_data <- map_dfr(all_files, read_csv)
 ```
 
@@ -121,7 +122,7 @@ ride_duration_stats <- combined_data %>%
 write_csv(ride_duration_stats, "ride_duration_stats.csv")
 ```
 
-The table below shows the descriptive statistics for ride length in minutes, comparing casual and annual members. Specifically, it summarizes the mean, median, minimum, and maximum ride duration for each user type.
+The data below shows the descriptive statistics for ride length in minutes, comparing casual and annual members. Specifically, it summarizes the mean, median, minimum, and maximum ride duration for each user type.
 
 | member_casual 	| mean_ride_length 	| median_ride_length 	| min_ride_length 	| max_ride_length 	|
 |---------------	|------------------	|--------------------	|-----------------	|-----------------	|
@@ -180,7 +181,7 @@ ride_duration_and_count_by_month <- combined_data %>%
 
 write_csv(ride_duration_and_count_by_month, "ride_duration_and_count_by_month.csv")
 ```
-The table below shows the monthly trends in ridership, summarizing the total number of rides and the average ride length (in minutes), categorized by member type and month.
+The data below indicates the monthly trends in ridership, summarizing the total number of rides and the average ride length (in minutes), categorized by member type and month.
 
 | member_casual 	| month 	| total_rides 	| average_ride_length 	|
 |---------------	|-------	|-------------	|---------------------	|
@@ -465,6 +466,12 @@ The graph below shows that Casual riders overwhelmingly originate from stations 
 
 ![Chart](graphs/top_10_starting_stations.png)
 
+### Visual Summary of Analysis
+
+A visual summary of my analysis and findings is available in this Google Slides presentation:
+
+[Case Study Presentation](https://docs.google.com/presentation/d/1tSAN2O-nCUPZwXn4mAo8GnBrnL4hxDB_QYoiYfrqYw8/edit?usp=sharing)
+
 ## Step 6: Act
 
 The final section, Act, translates the findings into actionable business recommendations.
@@ -472,13 +479,13 @@ The final section, Act, translates the findings into actionable business recomme
 ### Recommendations: 
 
 1. Early Bird Annual Membership 
-   * Launch a targeted marketing campaign offering discounted early bird memberships starting in late February, just before casual ridership begins to increase with warmer weather.
+   * Launch a targeted early bird campaign in late February/early March, specifically promoting the annual discount before the rapid increase in casual ridership seen in March and April. This incentivizes conversion at the point of seasonal decision-making.
   
 2. Weekend Passes
    * Introduce flexible “Weekend Pass” plans designed to attract casual riders who primarily ride on Saturdays and Sundays. This can help transition them into annual membership through lower-commitment options.
 
 3. Geotargeted Marketing
-   * Deploy promotional kiosks or on-site ambassadors at top tourist and leisure stations during peak hours to promote membership benefits and offer sign-up incentives.
+   * Deploy promotional kiosks or on-site ambassadors at top tourist stations (e.g., Streeter Dr & Grand Ave) during peak casual hours (mid-afternoon, 1 PM - 5 PM, weekends) to promote annual membership benefits and offer immediate sign-up incentives.
 
 
 
