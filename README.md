@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project analyzes the Cyclistic Bike-Share case study, developed as part of the Google Data Analytics Professional Certificate capstone. The objective is to answer key business questions by applying the six-step data analysis process: Ask, Prepare, Process, Analyze, Share, and Act.
+This project analyzes the Cyclistic Bike-Share case study, developed as part of the Google Data Analytics Professional Certificate capstone. The objective is to answer key business questions by applying the Six-Step Data Analysis Process (Ask, Prepare, Process, Analyze, Share, Act).
 
 ## Background
 
@@ -12,7 +12,7 @@ The company offers flexible pricing plans, including single-ride passes, full-da
 
 ## Scenario
 
-For the purposes of this case study, I assume the role of a junior data analyst on Cyclistic’s marketing analytics team. The objective is to analyze rider behavior and present findings and recommendations to key stakeholders, including Marketing Director Lily Moreno and the Cyclistic executive team.
+For the purposes of this case study, my role is to serve as a Junior Data Analyst on Cyclistic’s marketing analytics team. The objective is to analyze rider behavior and present findings and recommendations to key stakeholders, including Marketing Director Lily Moreno and the Cyclistic executive team. While Cyclistic is a fictional company, the dataset used for this analysis is based on actual historical data from Divvy, Chicago’s public bike-share system.
  
 ## Step 1: Ask
 
@@ -22,7 +22,7 @@ The business task is to analyze how annual members and casual riders use Cyclist
 
 ### Does the Data ROCCC?
 
-To ensure the quality of this analysis, the data must be Reliable, Original, Comprehensive, Current, and Cited (ROCCC). The dataset used in this project consists of historical trip data from Divvy, Chicago’s bike-share system, from September 8th 2024 to September 8th 2025. The data was made publicly available by Motivate International Inc. under their Data License Agreement. The data is also public and anonymized to protect riders' privacy. It excludes any personally identifiable information such as names, phone numbers, or payment details. The raw data, once combined, is estimated to contain over 5.4 million total rides.
+To ensure the quality of this analysis, the data must be Reliable, Original, Comprehensive, Current, and Cited (ROCCC). The analysis uses publicly available historical data from Divvy, which is Chicago's real-world bike-share program that the fictional company Cyclistic is based on. The data used is from September 8th 2024 to September 8th 2025 and was made publicly available by Motivate International Inc. under their Data License Agreement. The data is also anonymized to protect riders' privacy and excludes any personally identifiable information such as names, phone numbers, or payment details. The raw data, once combined, is estimated to contain over 5.4 million total rides.
 
 Applying the ROCCC framework:
 - Reliable & Original: The data comes directly from a primary source (Divvy) and reflects actual trip history.
@@ -38,6 +38,7 @@ To start the analysis, we first set up the R environment in RStudio. We installe
 install.packages("tidyverse")
 
 library(tidyverse)
+library(lubridate)
 ```
 
 ### Data Consolidation
@@ -336,6 +337,7 @@ ride_duration_and_count_by_day %>%
   scale_y_continuous(labels = scales::comma) +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
+
 
 ride_duration_and_count_by_day %>%
   ggplot(aes(x = day_of_week, y = average_ride_length, fill = member_casual)) +
