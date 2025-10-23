@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This project analyzes the Cyclistic Bike-Share case study, developed as part of the Google Data Analytics Professional Certificate capstone. The objective is to answer key business questions by applying the Six-Step Data Analysis Process (Ask, Prepare, Process, Analyze, Share, Act).
+This project analyzes the Cyclistic Bike-Share case study, a capstone for the Google Data Analytics Professional Certificate. The objective is to answer key business questions by applying the Six-Step Data Analysis Process (Ask, Prepare, Process, Analyze, Share, Act).
 
 ## Background
 
 Cyclistic is a bike-share program based in Chicago, offering 5,824 bicycles and 692 docking stations throughout the city. Unlike many competitors, Cyclistic provides a variety of bicycle types—including reclining bikes, hand tricycles, and cargo bikes—designed to accommodate riders with different needs, making the service more inclusive and accessible.
 
-The company offers flexible pricing plans, including single-ride passes, full-day passes, and annual memberships. While this approach appeals to a broad range of users, the company’s marketing director believes that long-term success depends on increasing the number of annual members.
+The company offers flexible pricing plans, including single-ride passes, full-day passes, and annual memberships. While this approach appeals to a broad range of users, the company’s marketing director believes that long-term success is dependent on increasing the number of annual members.
 
 ## Scenario
 
@@ -20,9 +20,9 @@ The business task is to analyze how annual members and casual riders use Cyclist
 
 ## Step 2: Prepare
 
-### Does the Data ROCCC?
+### Data Integrity Check (ROCCC)
 
-To ensure the quality of this analysis, the data must be Reliable, Original, Comprehensive, Current, and Cited (ROCCC). The analysis uses publicly available historical data from Divvy, which is Chicago's real-world bike-share program that the fictional company Cyclistic is based on. The data used is from September 8th 2024 to September 8th 2025 and was made publicly available by Motivate International Inc. under their Data License Agreement. The data is also anonymized to protect riders' privacy and excludes any personally identifiable information such as names, phone numbers, or payment details. The raw data, once combined, is estimated to contain over 5.4 million total rides.
+To ensure the quality of this analysis, the data must be Reliable, Original, Comprehensive, Current, and Cited (ROCCC). The analysis uses publicly available historical data from Divvy, which is Chicago's real-world bike-share program that the fictional company Cyclistic is based on. The data used is from September 2024 to September 2025 and was made publicly available by Motivate International Inc. under their Data License Agreement. The data is also anonymized to protect riders' privacy and excludes any personally identifiable information such as names, phone numbers, or payment details. The raw data, once combined, is estimated to contain over 5.4 million total rides.
 
 Applying the ROCCC framework:
 - Reliable & Original: The data comes directly from a primary source (Divvy) and reflects actual trip history.
@@ -32,10 +32,11 @@ Applying the ROCCC framework:
 
 ### Preparing RStudio
 
-To start the analysis, we first set up the R environment in RStudio. We installed and loaded the tidyverse package, which gives us a powerful collection of tools for manipulating and visualizing the data.
+To start the analysis, the R environment needs to be set up in RStudio. The tidyverse package was installed and loaded along with the lubridate package, which provides a powerful collection of tools for manipulating and visualizing the date/time data.
 
 ```r
 install.packages("tidyverse")
+install.packages("lubridate")
 
 library(tidyverse)
 library(lubridate)
@@ -105,9 +106,9 @@ combined_data <- combined_data %>%
 
 ## Step 4: Analyze
 
-### Descriptive Analysis on Ride Length by User Type
+### Descriptive Analysis on Ride Length by Rider Type
 
-After cleaning and manipulating the data, descriptive statistics were calculated to understand ride duration based on membership type. The mean, median, minimum, and maximum ride lengths were summarized for both "member" and "casual" riders. The results of this summary were then saved to a CSV file named ride_duration_stats.csv for further reference
+Descriptive statistics were calculated to understand ride duration based on membership type. This summary was saved to ride_duration_stats.csv.
 
 ```r
 ride_duration_stats <- combined_data %>%
@@ -122,7 +123,7 @@ ride_duration_stats <- combined_data %>%
 write_csv(ride_duration_stats, "ride_duration_stats.csv")
 ```
 
-The data below shows the descriptive statistics for ride length in minutes, comparing casual and annual members. Specifically, it summarizes the mean, median, minimum, and maximum ride duration for each user type.
+The table below summarizes the descriptive statistics for ride length (in minutes), comparing casual and annual members.
 
 | member_casual 	| mean_ride_length 	| median_ride_length 	| min_ride_length 	| max_ride_length 	|
 |---------------	|------------------	|--------------------	|-----------------	|-----------------	|
@@ -131,9 +132,9 @@ The data below shows the descriptive statistics for ride length in minutes, comp
 
 * Casual riders have a much higher mean ride length (22.78 min) compared to annual members (12.19 min), suggesting they use the bikes for longer, possibly recreational rides, while annual members use them for commutes/quick trips.
 
-### Analyzing Daily Usage Trend by User Type
+### Analyzing Daily Usage Trend by Rider Type
 
-Further analysis was performed to understand daily rider behavior. The data was grouped by both member type and day of the week to calculate the total number of rides and the average ride length. This summary was then saved to a CSV file named ride_duration_and_count_by_weekday.csv for documentation and further analysis.
+The data was grouped by member type and day of the week to calculate the total number of rides and the average ride length. This summary was saved to ride_duration_and_count_by_day.csv.
 
 ```r
 ride_duration_and_count_by_day <- combined_data %>%
@@ -146,7 +147,7 @@ ride_duration_and_count_by_day <- combined_data %>%
 write_csv(ride_duration_and_count_by_day, "ride_duration_and_count_by_day.csv")
 ```
 
-The table below shows the daily usage patterns for casual and member riders. It presents the total number of rides and the average ride length (in minutes), aggregated by member type and day of the week.
+The table below displays the total rides and average ride length (in minutes) aggregated by rider type and day of the week.
 
 | member_casual 	| day_of_week 	| total_rides 	| average_ride_length 	|
 |---------------	|-------------	|-------------	|---------------------	|
@@ -167,9 +168,9 @@ The table below shows the daily usage patterns for casual and member riders. It 
 
 * Casual riders peak heavily on weekends (Sat/Sun), while member ridership is highest and consistent Monday-Thursday, indicating a commuter pattern for annual members.
 
-### Analyzing Monthly Usage Trends by User Type
+### Analyzing Monthly Usage Trends by Rider Type
 
-To further explore rider behavior, a summary was created to analyze monthly trends in ride duration and count. The data was grouped by member type and month to calculate the total number of rides and the average ride length. This summary was then saved to a CSV file named ride_duration_and_count_by_month.csv
+A summary was created to analyze monthly trends in ride duration and count, grouped by member type and month. This summary was saved to ride_duration_and_count_by_month.csv.
 
 ```r
 ride_duration_and_count_by_month <- combined_data %>%
@@ -212,9 +213,9 @@ The data below indicates the monthly trends in ridership, summarizing the total 
 
 * Both groups have clear seasonal peaks (Summer/Fall), but the difference in average ride length is largest during these peak months, reinforcing the recreational use by casuals during warm weather.
 
-### Analyzing Hourly Usage Trends by User Type
+### Analyzing Hourly Usage Trends by Rider Type
 
-To provide a more granular view of daily ridership, the data was further summarized to analyze hourly trends. The data was grouped by member type and hour of the day, allowing for the calculation of total rides and average ride length for each hour. This summary was then saved to a CSV file named ride_duration_and_count_by_hour.csv.
+The data was summarized to analyze hourly trends in ride count and ride length, grouped by member type and hour of the day. This summary was saved to ride_duration_and_count_by_hour.csv
 
 ```r
 ride_duration_and_count_by_hour <- combined_data %>%
@@ -226,7 +227,7 @@ ride_duration_and_count_by_hour <- combined_data %>%
 
 write_csv(ride_duration_and_count_by_hour, "ride_duration_and_count_by_hour.csv")
 ```
-The table below shows a granular view of daily ridership, summarizing the total number of rides and the average ride length (in minutes), broken down by member type and hour of the day (0−23).
+The table below summarizes total rides and average ride length (in minutes) by rider type and hour of the day (0–23).
 
 | member_casual 	| hour_of_day 	| total_rides 	| average_ride_length 	|
 |---------------	|-------------	|-------------	|---------------------	|
@@ -281,9 +282,9 @@ The table below shows a granular view of daily ridership, summarizing the total 
 
 * Annual Members show a clear bimodal distribution (morning and evening commuter peaks). Casuals have a single, broader peak in the mid-afternoon (1:00 PM - 5:00 PM), consistent with leisure activity.
 
-### Analyzing Top 10 Start Stations by User Type
+### Analyzing Top 10 Start Stations by Rider Type
 
-To understand ridership patterns across different station locations, the top 10 most popular starting stations were identified and compared between casual and member riders. The data was first counted by member type and station name, then grouped by member type, and finally, the top 10 stations with the highest total ride count were selected for each group. The final result was sorted and saved to a CSV file named top_10_starting_stations.csv
+The top 10 most popular starting stations were identified and compared between casual and member riders. The results were sorted and saved to top_10_starting_stations.csv.
 
 ```r
 top_10_starting_stations <- combined_data %>%
@@ -323,11 +324,12 @@ The table below shows the top 10 most popular starting stations for each user se
 
 ### Creating Graphs for Each Table
 
-To effectively translate our descriptive findings into compelling insights for key stakeholders, we will now execute the code necessary to generate the visual summaries for the 'Share' phase. This process involves creating seven targeted charts that categorize rider behavior across both Time (examining usage by hour, day of week, and month) and Location (identifying peak activity at top starting stations). These graphics utilize two primary metrics—Average Ride Length and Total Rides—to provide the robust visual evidence required to clearly distinguish the patterns of member and casual riders, ultimately driving our final strategic recommendations.
+The following code generates visual summaries that will be used for the Share phase, using ggplot2 to illustrate patterns across time and location.
 
-#### Graphing Daily Usage Trend by User Type
+#### Graphing Daily Usage Trend by Rider Type
 
 ```r
+# Create a graph mapping total rides by day of week
 ride_duration_and_count_by_day %>%
   ggplot(aes(x = day_of_week, y = total_rides, fill = member_casual)) +
   geom_col(position = "dodge") +
@@ -339,7 +341,7 @@ ride_duration_and_count_by_day %>%
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
-
+# Create a graph mapping average ride length by day of week
 ride_duration_and_count_by_day %>%
   ggplot(aes(x = day_of_week, y = average_ride_length, fill = member_casual)) +
   geom_col(position = "dodge") +
@@ -351,9 +353,10 @@ ride_duration_and_count_by_day %>%
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-#### Graphing Monthly Usage Trends by User Type
+#### Graphing Monthly Usage Trends by Rider Type
 
 ```r
+# Create a graph mapping total rides by month
 ride_duration_and_count_by_month %>%
   ggplot(aes(x = month, y = total_rides, group = member_casual, color = member_casual)) +
   geom_line(linewidth = 1.2) +
@@ -366,6 +369,7 @@ ride_duration_and_count_by_month %>%
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
+# Create a graph mapping average ride length by month
 ride_duration_and_count_by_month %>%
   ggplot(aes(x = month, y = average_ride_length, group = member_casual, color = member_casual)) +
   geom_line(linewidth = 1.2) +
@@ -378,9 +382,10 @@ ride_duration_and_count_by_month %>%
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-#### Graphing Hourly Usage Trends by User Type
+#### Graphing Hourly Usage Trends by Rider Type
 
 ```r
+# Create a graph mapping total rides by hour of day
 ride_duration_and_count_by_hour %>%
   ggplot(aes(x = hour_of_day, y = total_rides, group = member_casual, color = member_casual)) +
   geom_line(linewidth = 1.2) +
@@ -393,6 +398,7 @@ ride_duration_and_count_by_hour %>%
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
+# Create a graph mapping average ride length by hour of day
 ride_duration_and_count_by_hour %>%
   ggplot(aes(x = hour_of_day, y = average_ride_length, group = member_casual, color = member_casual)) +
   geom_line(linewidth = 1.2) +
@@ -405,9 +411,10 @@ ride_duration_and_count_by_hour %>%
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-#### Graphing Top 10 Start Stations by User Type
+#### Graphing Top 10 Start Stations by Rider Type
 
 ```r
+# Create a graph mapping total rides of top 10 stations
 top_10_starting_stations %>%
   arrange(member_casual, desc(total_rides)) %>%
   mutate(start_station_name = factor(start_station_name, levels = unique(start_station_name))) %>%
