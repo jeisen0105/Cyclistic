@@ -128,8 +128,6 @@ write_csv(ride_duration_stats, "ride_duration_stats.csv")
 | casual        	| 22.78            	| 13.02              	| 0.01            	| 1439.76         	|
 | member        	| 12.19            	| 8.72               	| 0.01            	| 1436.97         	|
 
-* Casual riders have a much higher mean ride length (22.78 min) compared to annual members (12.19 min), suggesting they use the bikes for longer, possibly recreational rides, while annual members use them for commutes/quick trips.
-
 ### Analyzing Daily Usage Trends by Rider Type
 
 The data was grouped by member type and day of the week to calculate the total number of rides and the average ride length. 
@@ -161,8 +159,6 @@ write_csv(ride_duration_and_count_by_day, "ride_duration_and_count_by_day.csv")
 | member        	| Thu         	| 437814      	| 11.72               	|
 | member        	| Fri         	| 402533      	| 12.08               	|
 | member        	| Sat         	| 341605      	| 13.52               	|
-
-* Casual riders peak heavily on weekends (Sat/Sun), while member ridership is highest and consistent Monday-Thursday, indicating a commuter pattern for annual members.
 
 ### Analyzing Monthly Usage Trends by Rider Type
 
@@ -205,8 +201,6 @@ write_csv(ride_duration_and_count_by_month, "ride_duration_and_count_by_month.cs
 | member        	| Oct   	| 289761      	| 11.88               	|
 | member        	| Nov   	| 177129      	| 10.95               	|
 | member        	| Dec   	| 102515      	| 10.51               	|
-
-* Both groups have clear seasonal peaks (Summer/Fall), but the difference in average ride length is largest during these peak months, reinforcing the recreational use by casuals during warm weather.
 
 ### Analyzing Hourly Usage Trends by Rider Type
 
@@ -274,8 +268,6 @@ write_csv(ride_duration_and_count_by_hour, "ride_duration_and_count_by_hour.csv"
 | member        	| 22          	| 56182       	| 12.48               	|
 | member        	| 23          	| 34469       	| 12.62               	|
 
-* Annual Members show a clear bimodal distribution (morning and evening commuter peaks). Casuals have a single, broader peak in the mid-afternoon (1:00 PM - 5:00 PM), consistent with leisure activity.
-
 ### Analyzing Top 10 Start Stations by Rider Type
 
 The top 10 most popular starting stations were identified and compared between casual and member riders. 
@@ -312,8 +304,6 @@ write_csv(top_10_starting_stations, "top_10_starting_stations.csv")
 | member        	| Wells St & Elm St                  	| 18491       	|
 | member        	| Wells St & Concord Ln              	| 18105       	|
 | member        	| University Ave & 57th St           	| 16866       	|
-
-* Casual top stations (e.g., Streeter Dr & Grand Ave, Shedd Aquarium) are overwhelmingly tourist/recreational hotspots, while member top stations (e.g., Kingsbury St & Kinzie St, Clinton St & Washington Blvd) are concentrated in business/commuter districts.
 
 ### Creating Graphs for Each Table
 
